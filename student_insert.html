@@ -1,0 +1,47 @@
+<?php
+
+include "connection.php";
+
+if(isset($_POST['submit']))
+{
+$Register_no=$_POST['r_no'];
+$Name=$_POST['name'];
+$Course_code=$_POST['c_code'];
+$Course_name=$_POST['c_name'];
+$Mark=$_POST['mark'];
+
+$sql="INSERT INTO `student_tbl`(`r_no`,`name`,`c_code`,`c_name`,`mark`) VALUES("$Register_no","$Name","$Course_code","$Course_name","$Mark")";
+
+$result=$conn->query($sql);
+if($result($conn,$sql))
+{
+echo "Values added";
+}
+else
+{
+echo "error".$sql."<br>".$conn->error;
+}
+$conn->close();
+
+}
+
+?>
+<html>
+<head>
+<title>Student Mark Information</title>
+</head>
+<body>
+
+<table>
+<form action="" method="POST">
+Register No.:<input type="text" name="r_no"><br><br>
+Name:<input type="text" name="name"><br><br>
+Course code:<input type="text" name="c_code"><br><br>
+Course name:<input type="text" name="c_name"><br><br>
+Mark:<input type="text" name="mark"><br><br>
+<input type="button" name="submit" value="submit">
+</form> 
+</table>
+
+</body>
+</html>
